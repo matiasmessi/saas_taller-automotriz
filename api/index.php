@@ -2,6 +2,12 @@
 
 define('LARAVEL_START', microtime(true));
 
+// 💡 REDIRECCIÓN PARA VERCEL: Forzamos las cachés de paquetes a /tmp antes del arranque
+$_ENV['APP_SERVICES_CACHE_PATH'] = '/tmp/services.php';
+$_ENV['APP_PACKAGES_CACHE_PATH'] = '/tmp/packages.php';
+putenv('APP_SERVICES_CACHE_PATH=/tmp/services.php');
+putenv('APP_PACKAGES_CACHE_PATH=/tmp/packages.php');
+
 // 1. Cargar el Autoloader de Composer
 require __DIR__ . '/../vendor/autoload.php';
 
