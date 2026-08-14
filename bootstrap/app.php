@@ -11,6 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        // Confiar en los proxies de Vercel para forzar HTTPS
+        $middleware->trustProxies(at: '*');
+
         $middleware->alias([
             'permiso' => \App\Http\Middleware\VerificarPermiso::class,
             'superadmin' => \App\Http\Middleware\EsSuperadmin::class,
