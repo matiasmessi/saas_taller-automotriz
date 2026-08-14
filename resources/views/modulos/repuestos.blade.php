@@ -53,8 +53,8 @@
                     </td>
                     <td>
                         <div class="row-actions">
-                            <a href="{{ route('repuestos.edit', $r) }}" class="ico-btn" title="Editar"><i class="fa-solid fa-pen"></i></a>
-                            <form method="POST" action="{{ route('repuestos.destroy', $r) }}" onsubmit="return confirm('¿Eliminar el repuesto {{ $r->nombre }}?');">
+                            <a href="{{ route('repuestos.edit', $r->getKey()) }}" class="ico-btn" title="Editar"><i class="fa-solid fa-pen"></i></a>
+                            <form method="POST" action="{{ route('repuestos.destroy', $r->getKey()) }}" onsubmit="return confirm('¿Eliminar el repuesto {{ $r->nombre }}?');">
                                 @csrf @method('DELETE')
                                 <button type="submit" class="ico-btn ico-danger" title="Eliminar"><i class="fa-solid fa-trash"></i></button>
                             </form>
@@ -69,4 +69,5 @@
     </div>
     @include('partials.pager', ['paginator' => $repuestos])
 </div>
+
 @endsection
